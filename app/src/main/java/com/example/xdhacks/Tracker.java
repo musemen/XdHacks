@@ -1,7 +1,10 @@
 package com.example.xdhacks;
 
-import java.util.List;
+import android.annotation.TargetApi;
 
+import java.util.List;
+import java.util.Objects;
+@TargetApi(19)
 public class Tracker {
 
     private List<Recipe> todaysRecipes;
@@ -66,4 +69,20 @@ public class Tracker {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tracker tracker = (Tracker) o;
+        return dailyTarget == tracker.dailyTarget &&
+                currentConsumption == tracker.currentConsumption &&
+                Objects.equals(todaysRecipes, tracker.todaysRecipes) &&
+                Objects.equals(pastRecipes, tracker.pastRecipes);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(todaysRecipes, pastRecipes, dailyTarget, currentConsumption);
+    }
 }

@@ -7,6 +7,7 @@ import com.example.xdhacks.User;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.zip.CheckedOutputStream;
 
 public class Community {
     public static List<Recipe> allRecipes;
@@ -80,8 +81,23 @@ public class Community {
             }
         }
 
-
         return finalList;
     }
+
+    public List<Recipe> searchByIngredient(Ingredient searchThis) {
+        List<Recipe> searchResult = new ArrayList<>();
+        for(int i = 0; i < Community.allRecipes.size(); i++) {
+            if(searchResult.size() <= 10) {
+                if(Community.allRecipes.get(i).ingredients.contains(searchThis)) {
+                    searchResult.add(Community.allRecipes.get(i));
+            }
+        }   else { break;
+            }
+        }
+        return null;
+    }
+
+
+
 
 }

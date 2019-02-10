@@ -176,5 +176,75 @@ public class Recipe {
         return Objects.hash(name, image, description, ingredients, steps, user, likeCount, diet);
     }
 
+    public void sampleRecipes() {
+        Recipe recipe1 = new Recipe("Roast Chicken and Vegtables",null,"This is a really simple recipe by me to decrease cholestrol " +
+                "content while having a healthy dose of protein",this.user);
+        Ingredient chicken = new Ingredient("3 chicken breasts",300);
+        Ingredient potatoes = new Ingredient("half a pound of potatoes",300);
+        Ingredient onion = new Ingredient("3 onions",50);
+        Ingredient salt = new Ingredient("2 teaspoons of salt",0);
+        recipe1.ingredients.add(chicken);
+        recipe1.ingredients.add(potatoes);
+        recipe1.ingredients.add(onion);
+        recipe1.ingredients.add(salt);
+        String firstStep = "Put it in the cooker";
+        String secondStep = "Let it cook for 2 hours till the chicken is brown";
+        String thirdStep = "Add potatoes";
+        String fourthStep = "Enjoy!";
+        List<String> steps = new ArrayList<>();
+        steps.add(firstStep);
+        steps.add(secondStep);
+        steps.add(thirdStep);
+        steps.add(fourthStep);
+        for(int i = 0; i < steps.size(); i++) {
+            recipe1.addSteps(steps.get(i));
+        }
+
+        Recipe recipe2 = new Recipe("Antipasti Penne",null,"",this.user);
+        Ingredient penne = new Ingredient("12 ounces of penne pasta",400);
+        Ingredient artichokes = new Ingredient("artichoke hearts",100);
+        recipe2.ingredients.add(penne);
+        recipe2.ingredients.add(artichokes);
+        recipe2.ingredients.add(onion);
+        recipe2.ingredients.add(salt);
+        String firstStep1 = "Put pasta is the boiler";
+        String secondStep2 = "Add the onions and the salt";
+        String thirdStep3 = "";
+        String fourthStep4 = "Enjoy!";
+        List<String> steps1 = new ArrayList<>();
+        steps1.add(firstStep1);
+        steps1.add(secondStep2);
+        steps1.add(thirdStep3);
+        steps1.add(fourthStep4);
+        for(int i = 0; i < steps.size(); i++) {
+            recipe2.addSteps(steps.get(i));
+        }
+
+        Recipe  recipe3 = new Recipe("Tofu Stirfry",null,"",this.user);
+        Ingredient tofu = new Ingredient("1 pound of tofu",400);
+        Ingredient tofuSauce = new Ingredient("",100);
+        recipe3.ingredients.add(penne);
+        recipe3.ingredients.add(artichokes);
+        recipe3.ingredients.add(onion);
+        recipe3.ingredients.add(salt);
+        String firstStep2 = "Put pasta is the boiler";
+        String secondStep3 = "Add the onions and the salt";
+        String thirdStep4 = "";
+        String fourthStep5 = "Enjoy!";
+        List<String> steps2 = new ArrayList<>();
+        steps2.add(firstStep2);
+        steps2.add(secondStep3);
+        steps2.add(thirdStep4);
+        steps2.add(fourthStep5);
+        for(int i = 0; i < steps.size(); i++) {
+            recipe2.addSteps(steps2.get(i));
+        }
+
+
+
+
+
+
+    }
 
 }
