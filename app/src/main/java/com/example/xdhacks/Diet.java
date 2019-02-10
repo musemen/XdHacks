@@ -1,5 +1,5 @@
 package com.example.xdhacks;
 
 public enum Diet {
-    VEGETARIAN, MEAT, ALL_AROUND;
+    VEGETARIAN, VEGAN, ALL_AROUND;
 }

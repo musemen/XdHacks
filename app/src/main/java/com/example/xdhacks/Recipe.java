@@ -14,14 +14,14 @@ import java.util.List;
 
 public class Recipe {
 
-    public String name;
-    public Image image;
-    public String description;
-    public List<Ingredient> ingredients;
-    public List<String> steps;
-    public User user;
-    public int likeCount;
-    public Diet diet;
+    private String name;
+    private Image image;
+    private String description;
+    private List<Ingredient> ingredients;
+    private List<String> steps;
+    private User user;
+    private int likeCount;
+    private Diet diet;
 
     public Recipe(String name, Image image, String description, User user) {
         this.name = name;
