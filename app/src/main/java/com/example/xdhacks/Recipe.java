@@ -1,44 +1,43 @@
 package com.example.xdhacks;
 
 import android.annotation.TargetApi;
-import android.media.Image;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+@TargetApi(19)
 public class Recipe {
 
     private String name;
-    private Image image;
+    private Drawable image;
     private String description;
-    private List<Ingredient> ingredients;
+    public List<Ingredient> ingredients;
     private List<String> steps;
     private User user;
     private int likeCount;
     private Diet diet;
 
-    public Recipe(String name, Image image, String description, User user) {
+    public Recipe(String name, Drawable image, String description, User user) {
         this.name = name;
-        this.image = image;
         this.description = description;
         this.ingredients = new ArrayList<>();
         this.steps = new ArrayList<>();
         this.user = user;
         this.likeCount = 0;
-        this.diet = Diet.ALL_AROUND;
+        this.image = image;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public Image getImage() {
+    public Drawable getImage() {
         return this.image;
     }
 
@@ -86,6 +85,7 @@ public class Recipe {
         this.description = description;
     }
 
+
     public int totalCalories() {
         int totalCount = 0;
         for (Ingredient i: ingredients)
@@ -99,7 +99,7 @@ public class Recipe {
         try {
             JSONObject obj = new JSONObject(data);
             this.name = obj.getString("name");
-            this.image = (Image)obj.get("image");
+            this.image = (Drawable) obj.get("image");
             this.description = obj.getString("description");
             this.ingredients = new ArrayList<>();
             JSONArray ingsArr = obj.getJSONArray("ingredients");
@@ -154,4 +154,27 @@ public class Recipe {
         }
         return null;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Recipe recipe = (Recipe) o;
+        return likeCount == recipe.likeCount &&
+                Objects.equals(name, recipe.name) &&
+                Objects.equals(image, recipe.image) &&
+                Objects.equals(description, recipe.description) &&
+                Objects.equals(ingredients, recipe.ingredients) &&
+                Objects.equals(steps, recipe.steps) &&
+                Objects.equals(user, recipe.user) &&
+                diet == recipe.diet;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name, image, description, ingredients, steps, user, likeCount, diet);
+    }
+
+
 }

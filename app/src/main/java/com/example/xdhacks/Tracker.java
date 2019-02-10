@@ -49,10 +49,10 @@ public class Tracker {
     }
 
     public int getPastCaloriesConsummedSoFar() {
-        int result;
+        int result = 0;
 
         for (Recipe r : pastRecipes) {
-            result += r.getCalories();
+            result += r.totalCalories();
         }
 
         return result;
@@ -62,7 +62,7 @@ public class Tracker {
         currentConsumption = 0;
 
         for (Recipe r : todaysRecipes) { // 5% range
-            currentConsumption += r.getCalories();
+            currentConsumption += r.totalCalories();
         }
     }
 
