@@ -3,6 +3,8 @@ package com.example.xdhacks;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+
 public class UserTest {
     @Test
     public void addRecipesTest() {
@@ -110,7 +112,11 @@ public class UserTest {
         user.likeRecipe(test1);
         user.likeRecipe(test2);
         user.likeRecipe(test5);
-        Assert.assertEquals(6,user.getPriorityList().size());
+        Assert.assertEquals(3,user.getPriorityList().size());
+        Assert.assertEquals(6,user.getScore(user.getPriorityList().get(0).getIngredients()));
+        Assert.assertEquals(4,user.getScore(user.getPriorityList().get(1).getIngredients()));
+        Assert.assertEquals(0,user.getScore(user.getPriorityList().get(2).getIngredients()));
+
     }
 
 

@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -112,23 +113,26 @@ public class User {
             scoreList.add(score);
         }
 
+
         for(int i = 0; i < 3 ; i++) {
             int highestIndex = Collections.max(scoreList);
-            int highestScore = scoreList.get(highestIndex);
-            Recipe tempRecipe = finalMap.get(highestScore);
+        //    int highestScore = scoreList.get(highestIndex);
+            Recipe tempRecipe = finalMap.get(highestIndex);
             answer.add(tempRecipe);
-            scoreList.remove(highestIndex);
-
-        }
+            scoreList.removeAll(Arrays.asList(highestIndex));
+    }
         return answer;
+
     }
 
     public int getScore (List<Ingredient> ingredientList) {
         int score = 0;
         for(int i = 0; i < ingredientList.size(); i++) {
             Ingredient tempIn = ingredientList.get(i);
-            int temp = this.ingredients.get(tempIn);
-            score += temp;
+            if(this.ingredients.containsKey(tempIn)){
+                int temp = this.ingredients.get(tempIn);
+                score += temp;
+            }
         }
 
         return score;
