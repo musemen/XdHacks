@@ -23,7 +23,7 @@ public class Community {
         List<Recipe> finalRecipes = new ArrayList<>();
         List<Integer> highestLikes = new ArrayList<>();
         for(int i = 0; i < Community.allRecipes.size(); i++) {
-            if(highestLikes.size() <= 6) {
+            if(highestLikes.size()  < 6) {
                 highestLikes.add(Community.allRecipes.get(i).getLikeCount());
             } else {
                 int index = Collections.min(highestLikes);
@@ -35,7 +35,7 @@ public class Community {
 
             }
         }
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 6; i++) {
             for(int j = 0; j < Community.allRecipes.size(); j++) {
                 if (Community.allRecipes.get(j).getLikeCount() == highestLikes.get(0)) {
                     finalRecipes.add(Community.allRecipes.get(j));
@@ -69,17 +69,19 @@ public class Community {
             }
         }
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10 && i < filteredList.size(); i++) {
             for(int j = 0; j < filteredList.size(); j++) {
-                if (filteredList.get(j).getLikeCount() == highestLikes.get(0)) {
-                   finalList.add(Community.allRecipes.get(j));
+                if (filteredList.get(j).getLikeCount() == Collections.max(highestLikes)) {
+                   finalList.add(filteredList.get(j));
+                   int toDelete = Collections.max(highestLikes);
+                   highestLikes.remove(highestLikes.indexOf(toDelete));
                     break;
                 }
             }
         }
 
 
-        return filteredList;
+        return finalList;
     }
 
 }

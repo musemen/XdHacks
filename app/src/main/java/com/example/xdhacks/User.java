@@ -100,7 +100,7 @@ public class User {
                 this.ingredients.put(tempList.get(i),1);
             }
         }
-        }
+    }
 
     public List<Recipe> getPriorityList() {
         HashMap<Integer,Recipe> finalMap = new HashMap<>();
@@ -112,9 +112,7 @@ public class User {
             finalMap.put(score, finalRecipes.get(i));
             scoreList.add(score);
         }
-
-
-        for(int i = 0; i < 3 ; i++) {
+        for(int i = 0; i < 3 & i<finalMap.size(); i++) {
             int highestIndex = Collections.max(scoreList);
         //    int highestScore = scoreList.get(highestIndex);
             Recipe tempRecipe = finalMap.get(highestIndex);
