@@ -1,4 +1,4 @@
-package com.example.xdhacks;
+package com.example.xdhacks.parser;
 
 import org.json.JSONArray;
 import org.json.JSONException;

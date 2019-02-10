@@ -1,4 +1,4 @@
-package com.example.xdhacks;
+package com.example.xdhacks.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +10,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import parser.LibraryParser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             InputStream is = new FileInputStream("./library.json");
             String jsonData =  readSource(is);
-            LibraryParser libParser = new LibraryParser();
+            RecipeParser libParser = new RecipeParser();
             libParser.parseLibrary(jsonData);
         } catch (IOException e) {
             System.out.println("Error reading file...");
