@@ -274,6 +274,7 @@ public class CommunityTest {
 
         Assert.assertEquals(1,filteredListFinal.size());
         Assert.assertTrue(test7 == Community.filter(Diet.ALL_AROUND).get(0));
+        Assert.assertTrue(!Community.filter(Diet.ALL_AROUND).contains(test4));
     }
 
 
